@@ -24,21 +24,21 @@ and security properties that are not provided by TLS when external PSKs are used
 <meta content="draft-ietf-tls-external-psk-guidance-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.5.0
-    Python 3.8.5
+    Python 3.8.7
     appdirs 1.4.4
     ConfigArgParse 1.2.3
     google-i18n-address 2.4.0
     html5lib 1.1
-    intervaltree 3.0.2
+    intervaltree 3.1.0
     Jinja2 2.11.2
     kitchen 1.2.6
-    lxml 4.5.0
-    pycountry 19.8.18
-    pyflakes 2.1.1
-    PyYAML 5.3.1
-    requests 2.22.0
-    setuptools 45.2.0
-    six 1.14.0
+    lxml 4.6.2
+    pycountry 20.7.3
+    pyflakes 2.2.0
+    PyYAML 5.4.1
+    requests 2.25.1
+    setuptools 51.3.3
+    six 1.15.0
 -->
 <link href="draft-ietf-tls-external-psk-guidance.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -51,7 +51,23 @@ html {
   --link-color: #2a6496;
   --highlight-color: #f9f9f9;
   --line-color: #eee;
+  --pilcrow-weak: #ddd;
+  --pilcrow-strong: #bbb;
   --small-font-size: 14.5px;
+  scrollbar-color: #bbb #eee;
+}
+@media (prefers-color-scheme: dark) {
+html {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --title-color: #fff;
+  --link-color: #4da4f0;
+  --highlight-color: #282828;
+  --line-color: #444;
+  --pilcrow-weak: #444;
+  --pilcrow-strong: #666;
+  scrollbar-color: #777 #333;
+}
 }
 body {
   max-width: 600px;
@@ -342,14 +358,14 @@ a.pilcrow {
   opacity: 0.2;
   user-select: none;
 }
-a.pilcrow[href] { color: #ddd; }
+a.pilcrow[href] { color: var(--pilcrow-weak); }
 a.pilcrow[href]:hover { text-decoration: none; }
-@media screen {
+@media not print {
   :hover > a.pilcrow {
     opacity: 1;
   }
   a.pilcrow[href]:hover {
-    color: #bbb;
+    color: var(--pilcrow-strong);
     background-color: transparent;
   }
 }
@@ -831,11 +847,11 @@ address div.right {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Guidance for External PSK Usage in TLS</td>
-<td class="right">January 2021</td>
+<td class="right">February 2021</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Housley, et al.</td>
-<td class="center">Expires 26 July 2021</td>
+<td class="center">Expires 20 August 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -848,12 +864,12 @@ address div.right {
 <dd class="internet-draft">draft-ietf-tls-external-psk-guidance-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-01-22" class="published">22 January 2021</time>
+<time datetime="2021-02-16" class="published">16 February 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-07-26">26 July 2021</time></dd>
+<dd class="expires"><time datetime="2021-08-20">20 August 2021</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -914,7 +930,7 @@ and security properties that are not provided by TLS when external PSKs are used
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 26 July 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 20 August 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -942,78 +958,78 @@ and security properties that are not provided by TLS when external PSKs are used
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.1">
+<nav class="toc"><ul class="compact ulEmpty toc">
+<li class="compact ulEmpty toc" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.2">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-conventions-and-definitions" class="xref">Conventions and Definitions</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.3">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-notation" class="xref">Notation</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.4">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-psk-security-properties" class="xref">PSK Security Properties</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.4.2.1">
+<ul class="compact ulEmpty toc">
+<li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-shared-psks" class="xref">Shared PSKs</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.2">
+              <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2">
                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-psk-entropy" class="xref">PSK Entropy</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.5">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.6">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-external-psk-use-cases-and-" class="xref">External PSK Use Cases and Provisioning Processes</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.6.2.1">
+<ul class="compact ulEmpty toc">
+<li class="compact ulEmpty toc" id="section-toc.1-1.6.2.1">
                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-provisioning-examples" class="xref">Provisioning Examples</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.2">
+              <li class="compact ulEmpty toc" id="section-toc.1-1.6.2.2">
                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-provisioning-constraints" class="xref">Provisioning Constraints</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.7">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-recommendations-for-externa" class="xref">Recommendations for External PSK Usage</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.7.2.1">
+<ul class="compact ulEmpty toc">
+<li class="compact ulEmpty toc" id="section-toc.1-1.7.2.1">
                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-stack-interfaces" class="xref">Stack Interfaces</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.7.2.1.2.1">
+<ul class="compact ulEmpty toc">
+<li class="compact ulEmpty toc" id="section-toc.1-1.7.2.1.2.1">
                     <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="xref">7.1.1</a>.  <a href="#name-psk-identity-encoding-and-c" class="xref">PSK Identity Encoding and Comparison</a><a href="#section-toc.1-1.7.2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.1.2.2">
+                  <li class="compact ulEmpty toc" id="section-toc.1-1.7.2.1.2.2">
                     <p id="section-toc.1-1.7.2.1.2.2.1"><a href="#section-7.1.2" class="xref">7.1.2</a>.  <a href="#name-psk-identity-collisions" class="xref">PSK Identity Collisions</a><a href="#section-toc.1-1.7.2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.8">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.9">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.10">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.10">
             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.10.2.1">
+<ul class="compact ulEmpty toc">
+<li class="compact ulEmpty toc" id="section-toc.1-1.10.2.1">
                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.10.2.2">
+              <li class="compact ulEmpty toc" id="section-toc.1-1.10.2.2">
                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.11">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.11">
             <p id="section-toc.1-1.11.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.12">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.12">
             <p id="section-toc.1-1.12.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
@@ -1044,7 +1060,7 @@ DTLS <span>[<a href="#I-D.ietf-tls-dtls13" class="xref">I-D.ietf-tls-dtls13</a>]
       </h2>
 <p id="section-2-1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span>
+document are to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span>
 when, and only when, they appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1083,7 +1099,7 @@ severely weakened as discussed below.<a href="#section-4-2" class="pilcrow">¶</
 <p id="section-4.1-1">As discussed in <a href="#use-cases" class="xref">Section 6</a>, there are use cases where it is
 desirable for multiple clients or multiple servers to share a PSK. If
 this is done naively by having all members share a common key, then
-TLS only authenticates the entire group, and the security of the
+TLS authenticates only group membership, and the security of the
 overall system is inherently rather brittle. There are a number of
 obvious weaknesses here:<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-4.1-2">
@@ -1099,37 +1115,38 @@ attacker to passively read (and modify) all traffic.<a href="#section-4.1-2.3" c
 </li>
         </ol>
 <p id="section-4.1-3">Additionally, a malicious non-member can reroute handshakes between honest group members
-to connect them in unintended ways, as described below. (Note that this class of attack is
+to connect them in unintended ways, as described below. Note that this class of attack is
 not possible if each member uses the SNI extension <span>[<a href="#RFC6066" class="xref">RFC6066</a>]</span> and terminates the
-connection on mismatch. See <span>[<a href="#Selfie" class="xref">Selfie</a>]</span> for details.) Let the group of peers who know the
-key be <code>A</code>, <code>B</code>, and <code>C</code>. The attack proceeds as follows:<a href="#section-4.1-3" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-4.1-4">
-<li id="section-4.1-4.1">
-            <code>A</code> sends a <code>ClientHello</code> to <code>B</code>.<a href="#section-4.1-4.1" class="pilcrow">¶</a>
+connection on mismatch. See <span>[<a href="#Selfie" class="xref">Selfie</a>]</span> for details.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.1-4">To illustrate the rerouting attack, consider the group of peers who know
+the PSK be <code>A</code>, <code>B</code>, and <code>C</code>. The attack proceeds as follows:<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.1-5">
+<li id="section-4.1-5.1">
+            <code>A</code> sends a <code>ClientHello</code> to <code>B</code>.<a href="#section-4.1-5.1" class="pilcrow">¶</a>
 </li>
-          <li id="section-4.1-4.2">The attacker intercepts the message and redirects it to <code>C</code>.<a href="#section-4.1-4.2" class="pilcrow">¶</a>
+          <li id="section-4.1-5.2">The attacker intercepts the message and redirects it to <code>C</code>.<a href="#section-4.1-5.2" class="pilcrow">¶</a>
 </li>
-          <li id="section-4.1-4.3">
-            <code>C</code> responds with a <code>ServerHello</code> to <code>A</code>.<a href="#section-4.1-4.3" class="pilcrow">¶</a>
+          <li id="section-4.1-5.3">
+            <code>C</code> responds with a <code>ServerHello</code> to <code>A</code>.<a href="#section-4.1-5.3" class="pilcrow">¶</a>
 </li>
-          <li id="section-4.1-4.4">
+          <li id="section-4.1-5.4">
             <code>A</code> sends a <code>Finished</code> message to <code>B</code>.
-<code>A</code> has completed the handshake, ostensibly with <code>B</code>.<a href="#section-4.1-4.4" class="pilcrow">¶</a>
+<code>A</code> has completed the handshake, ostensibly with <code>B</code>.<a href="#section-4.1-5.4" class="pilcrow">¶</a>
 </li>
-          <li id="section-4.1-4.5">The attacker redirects the <code>Finished</code> message to <code>C</code>.
-<code>C</code> has completed the handshake with <code>A</code>.<a href="#section-4.1-4.5" class="pilcrow">¶</a>
+          <li id="section-4.1-5.5">The attacker redirects the <code>Finished</code> message to <code>C</code>.
+<code>C</code> has completed the handshake with <code>A</code>.<a href="#section-4.1-5.5" class="pilcrow">¶</a>
 </li>
         </ol>
-<p id="section-4.1-5">This attack violates the peer authentication property, and if <code>C</code> supports a
+<p id="section-4.1-6">This attack violates the peer authentication property, and if <code>C</code> supports a
 weaker set of cipher suites than <code>B</code>, this attack also violates the downgrade
 protection property. This rerouting is a type of identity misbinding attack
 <span>[<a href="#Krawczyk" class="xref">Krawczyk</a>]</span><span>[<a href="#Sethi" class="xref">Sethi</a>]</span>. Selfie attack <span>[<a href="#Selfie" class="xref">Selfie</a>]</span> is a special case of the rerouting
 attack against a group member that can act both as TLS server and client. In the
 Selfie attack, a malicious non-member reroutes a connection from the client to
-the server on the same endpoint.<a href="#section-4.1-5" class="pilcrow">¶</a></p>
-<p id="section-4.1-6">Finally, in addition to these weaknesses, sharing a PSK across nodes may negatively
+the server on the same endpoint.<a href="#section-4.1-6" class="pilcrow">¶</a></p>
+<p id="section-4.1-7">Finally, in addition to these weaknesses, sharing a PSK across nodes may negatively
 affect deployments. For example, revocation of individual group members is not
-possible without changing the authentication key for all members.<a href="#section-4.1-6" class="pilcrow">¶</a></p>
+possible without changing establishing a new PSK for all of the non-revoked members.<a href="#section-4.1-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="psk-entropy">
@@ -1424,11 +1441,11 @@ sharing the same group PSK can always impersonate each other.<a href="#section-8
 <dl class="references">
 <dt id="I-D.ietf-tls-dtls13">[I-D.ietf-tls-dtls13]</dt>
         <dd>
-<span class="refAuthor">Rescorla, E.</span><span class="refAuthor">, Tschofenig, H.</span><span class="refAuthor">, and N. Modadugu</span>, <span class="refTitle">"The Datagram Transport Layer Security (DTLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-dtls13-40</span>, <time datetime="2021-01-20" class="refDate">20 January 2021</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-tls-dtls13-40.txt">http://www.ietf.org/internet-drafts/draft-ietf-tls-dtls13-40.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span><span class="refAuthor">, Tschofenig, H.</span><span class="refAuthor">, and N. Modadugu</span>, <span class="refTitle">"The Datagram Transport Layer Security (DTLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-dtls13-41</span>, <time datetime="2021-02-07" class="refDate">7 February 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-tls-dtls13-41.txt">https://www.ietf.org/archive/id/draft-ietf-tls-dtls13-41.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-tls-external-psk-importer">[I-D.ietf-tls-external-psk-importer]</dt>
         <dd>
-<span class="refAuthor">Benjamin, D.</span><span class="refAuthor"> and C. Wood</span>, <span class="refTitle">"Importing External PSKs for TLS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-external-psk-importer-06</span>, <time datetime="2020-12-03" class="refDate">3 December 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-tls-external-psk-importer-06.txt">http://www.ietf.org/internet-drafts/draft-ietf-tls-external-psk-importer-06.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Benjamin, D.</span><span class="refAuthor"> and C. A. Wood</span>, <span class="refTitle">"Importing External PSKs for TLS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-external-psk-importer-06</span>, <time datetime="2020-12-03" class="refDate">3 December 2020</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-tls-external-psk-importer-06.txt">https://www.ietf.org/archive/id/draft-ietf-tls-external-psk-importer-06.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -1463,19 +1480,19 @@ sharing the same group PSK can always impersonate each other.<a href="#section-8
 <dd class="break"></dd>
 <dt id="I-D.ietf-tls-ctls">[I-D.ietf-tls-ctls]</dt>
         <dd>
-<span class="refAuthor">Rescorla, E.</span><span class="refAuthor">, Barnes, R.</span><span class="refAuthor">, and H. Tschofenig</span>, <span class="refTitle">"Compact TLS 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-ctls-01</span>, <time datetime="2020-11-02" class="refDate">2 November 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-tls-ctls-01.txt">http://www.ietf.org/internet-drafts/draft-ietf-tls-ctls-01.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span><span class="refAuthor">, Barnes, R.</span><span class="refAuthor">, and H. Tschofenig</span>, <span class="refTitle">"Compact TLS 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-ctls-01</span>, <time datetime="2020-11-02" class="refDate">2 November 2020</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-tls-ctls-01.txt">https://www.ietf.org/archive/id/draft-ietf-tls-ctls-01.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.irtf-cfrg-cpace">[I-D.irtf-cfrg-cpace]</dt>
         <dd>
-<span class="refAuthor">Abdalla, M.</span><span class="refAuthor">, Haase, B.</span><span class="refAuthor">, and J. Hesse</span>, <span class="refTitle">"CPace, a balanced composable PAKE"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-cfrg-cpace-00</span>, <time datetime="2020-07-28" class="refDate">28 July 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-irtf-cfrg-cpace-00.txt">http://www.ietf.org/internet-drafts/draft-irtf-cfrg-cpace-00.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Abdalla, M.</span><span class="refAuthor">, Haase, B.</span><span class="refAuthor">, and J. Hesse</span>, <span class="refTitle">"CPace, a balanced composable PAKE"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-cfrg-cpace-01</span>, <time datetime="2021-01-24" class="refDate">24 January 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-irtf-cfrg-cpace-01.txt">https://www.ietf.org/archive/id/draft-irtf-cfrg-cpace-01.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.irtf-cfrg-opaque">[I-D.irtf-cfrg-opaque]</dt>
         <dd>
-<span class="refAuthor">Krawczyk, H.</span><span class="refAuthor">, Lewi, K.</span><span class="refAuthor">, and C. Wood</span>, <span class="refTitle">"The OPAQUE Asymmetric PAKE Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-cfrg-opaque-01</span>, <time datetime="2020-11-02" class="refDate">2 November 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-irtf-cfrg-opaque-01.txt">http://www.ietf.org/internet-drafts/draft-irtf-cfrg-opaque-01.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Krawczyk, H.</span><span class="refAuthor">, Lewi, K.</span><span class="refAuthor">, and C. A. Wood</span>, <span class="refTitle">"The OPAQUE Asymmetric PAKE Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-cfrg-opaque-02</span>, <time datetime="2021-02-05" class="refDate">5 February 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-irtf-cfrg-opaque-02.txt">https://www.ietf.org/archive/id/draft-irtf-cfrg-opaque-02.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.mattsson-emu-eap-tls-psk">[I-D.mattsson-emu-eap-tls-psk]</dt>
         <dd>
-<span class="refAuthor">Mattsson, J.</span><span class="refAuthor">, Sethi, M.</span><span class="refAuthor">, Aura, T.</span><span class="refAuthor">, and O. Friel</span>, <span class="refTitle">"EAP-TLS with PSK Authentication (EAP-TLS-PSK)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mattsson-emu-eap-tls-psk-00</span>, <time datetime="2020-03-09" class="refDate">9 March 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-mattsson-emu-eap-tls-psk-00.txt">http://www.ietf.org/internet-drafts/draft-mattsson-emu-eap-tls-psk-00.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Mattsson, J. P.</span><span class="refAuthor">, Sethi, M.</span><span class="refAuthor">, Aura, T.</span><span class="refAuthor">, and O. Friel</span>, <span class="refTitle">"EAP-TLS with PSK Authentication (EAP-TLS-PSK)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mattsson-emu-eap-tls-psk-00</span>, <time datetime="2020-03-09" class="refDate">9 March 2020</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-mattsson-emu-eap-tls-psk-00.txt">https://www.ietf.org/archive/id/draft-mattsson-emu-eap-tls-psk-00.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="Krawczyk">[Krawczyk]</dt>
         <dd>

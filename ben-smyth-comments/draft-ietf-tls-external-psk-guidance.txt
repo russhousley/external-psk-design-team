@@ -5,12 +5,12 @@
 tls                                                           R. Housley
 Internet-Draft                                            Vigil Security
 Intended status: Informational                                J. Hoyland
-Expires: 26 July 2021                                    Cloudflare Ltd.
+Expires: 20 August 2021                                  Cloudflare Ltd.
                                                                 M. Sethi
                                                                 Ericsson
                                                                C.A. Wood
                                                               Cloudflare
-                                                         22 January 2021
+                                                        16 February 2021
 
 
                  Guidance for External PSK Usage in TLS
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 July 2021.
+   This Internet-Draft will expire on 20 August 2021.
 
 Copyright Notice
 
@@ -110,8 +110,8 @@ Table of Contents
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in BCP
-   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
 3.  Notation
@@ -143,8 +143,8 @@ Table of Contents
 
    As discussed in Section 6, there are use cases where it is desirable
    for multiple clients or multiple servers to share a PSK.  If this is
-   done naively by having all members share a common key, then TLS only
-   authenticates the entire group, and the security of the overall
+   done naively by having all members share a common key, then TLS
+   authenticates only group membership, and the security of the overall
    system is inherently rather brittle.  There are a number of obvious
    weaknesses here:
 
@@ -162,10 +162,12 @@ Table of Contents
 
    Additionally, a malicious non-member can reroute handshakes between
    honest group members to connect them in unintended ways, as described
-   below.  (Note that this class of attack is not possible if each
-   member uses the SNI extension [RFC6066] and terminates the connection
-   on mismatch.  See [Selfie] for details.)  Let the group of peers who
-   know the key be "A", "B", and "C".  The attack proceeds as follows:
+   below.  Note that this class of attack is not possible if each member
+   uses the SNI extension [RFC6066] and terminates the connection on
+   mismatch.  See [Selfie] for details.
+
+   To illustrate the rerouting attack, consider the group of peers who
+   know the PSK be "A", "B", and "C".  The attack proceeds as follows:
 
    1.  "A" sends a "ClientHello" to "B".
 
@@ -190,8 +192,8 @@ Table of Contents
 
    Finally, in addition to these weaknesses, sharing a PSK across nodes
    may negatively affect deployments.  For example, revocation of
-   individual group members is not possible without changing the
-   authentication key for all members.
+   individual group members is not possible without changing
+   establishing a new PSK for all of the non-revoked members.
 
 4.2.  PSK Entropy
 
@@ -485,15 +487,16 @@ Table of Contents
               Rescorla, E., Tschofenig, H., and N. Modadugu, "The
               Datagram Transport Layer Security (DTLS) Protocol Version
               1.3", Work in Progress, Internet-Draft, draft-ietf-tls-
-              dtls13-40, 20 January 2021, <http://www.ietf.org/internet-
-              drafts/draft-ietf-tls-dtls13-40.txt>.
+              dtls13-41, 7 February 2021,
+              <https://www.ietf.org/archive/id/draft-ietf-tls-
+              dtls13-41.txt>.
 
    [I-D.ietf-tls-external-psk-importer]
-              Benjamin, D. and C. Wood, "Importing External PSKs for
+              Benjamin, D. and C. A. Wood, "Importing External PSKs for
               TLS", Work in Progress, Internet-Draft, draft-ietf-tls-
               external-psk-importer-06, 3 December 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-tls-
-              external-psk-importer-06.txt>.
+              <https://www.ietf.org/archive/id/draft-ietf-tls-external-
+              psk-importer-06.txt>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -528,28 +531,30 @@ Table of Contents
    [I-D.ietf-tls-ctls]
               Rescorla, E., Barnes, R., and H. Tschofenig, "Compact TLS
               1.3", Work in Progress, Internet-Draft, draft-ietf-tls-
-              ctls-01, 2 November 2020, <http://www.ietf.org/internet-
-              drafts/draft-ietf-tls-ctls-01.txt>.
+              ctls-01, 2 November 2020,
+              <https://www.ietf.org/archive/id/draft-ietf-tls-ctls-
+              01.txt>.
 
    [I-D.irtf-cfrg-cpace]
               Abdalla, M., Haase, B., and J. Hesse, "CPace, a balanced
               composable PAKE", Work in Progress, Internet-Draft, draft-
-              irtf-cfrg-cpace-00, 28 July 2020, <http://www.ietf.org/
-              internet-drafts/draft-irtf-cfrg-cpace-00.txt>.
+              irtf-cfrg-cpace-01, 24 January 2021,
+              <https://www.ietf.org/archive/id/draft-irtf-cfrg-cpace-
+              01.txt>.
 
    [I-D.irtf-cfrg-opaque]
-              Krawczyk, H., Lewi, K., and C. Wood, "The OPAQUE
+              Krawczyk, H., Lewi, K., and C. A. Wood, "The OPAQUE
               Asymmetric PAKE Protocol", Work in Progress, Internet-
-              Draft, draft-irtf-cfrg-opaque-01, 2 November 2020,
-              <http://www.ietf.org/internet-drafts/draft-irtf-cfrg-
-              opaque-01.txt>.
+              Draft, draft-irtf-cfrg-opaque-02, 5 February 2021,
+              <https://www.ietf.org/archive/id/draft-irtf-cfrg-opaque-
+              02.txt>.
 
    [I-D.mattsson-emu-eap-tls-psk]
-              Mattsson, J., Sethi, M., Aura, T., and O. Friel, "EAP-TLS
-              with PSK Authentication (EAP-TLS-PSK)", Work in Progress,
-              Internet-Draft, draft-mattsson-emu-eap-tls-psk-00, 9 March
-              2020, <http://www.ietf.org/internet-drafts/draft-mattsson-
-              emu-eap-tls-psk-00.txt>.
+              Mattsson, J. P., Sethi, M., Aura, T., and O. Friel, "EAP-
+              TLS with PSK Authentication (EAP-TLS-PSK)", Work in
+              Progress, Internet-Draft, draft-mattsson-emu-eap-tls-psk-
+              00, 9 March 2020, <https://www.ietf.org/archive/id/draft-
+              mattsson-emu-eap-tls-psk-00.txt>.
 
    [Krawczyk] Krawczyk, H., "SIGMA: The ‘SIGn-and-MAc’ Approach to
               Authenticated Diffie-Hellman and Its Use in the IKE
